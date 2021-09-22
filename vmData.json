@@ -1,0 +1,15 @@
+{
+  "fqdns": "",
+  "id": "/subscriptions/15e6a307-c187-4426-bcdb-e2cadd384ebd/resourceGroups/kg-lc0921-ps-rg/providers/Microsoft.Compute/virtualMachines/kg-lc0921-ps-vm",
+  "identity": {
+    "systemAssignedIdentity": "328388ef-538c-4244-951c-8996b973422b",
+    "userAssignedIdentities": {}
+  },
+  "location": "eastus",
+  "macAddress": "00-0D-3A-8A-E3-30",
+  "powerState": "VM running",
+  "privateIpAddress": "10.0.0.4",
+  "publicIpAddress": "52.152.229.209",
+  "resourceGroup": "kg-lc0921-ps-rg",
+  "zones": ""
+}

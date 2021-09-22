@@ -14,12 +14,14 @@ az group create -n $rgName
 az configure --defaults group=$rgName
 
 # TODO: provision VM
-$vmData = $(az vm create -n $vmName --size $vmSize --image $vmImage --admin-username $vmAdminUsername --admin-password "LaunchCode-@zure1" --authentication-type password --assign-identity --query "[ identity.systemAssignedIdentity, publicIpAddress ]" -o tsv)
+### Ah had to pay more attention to 9.8 [create object > pipe/export file, then var = file] 
+az vm create -n $vmName --size $vmSize --image $vmImage --admin-username $vmAdminUsername --admin-password "LaunchCode-@zure1" --authentication-type "password" --assign-identity | sc vmData.json
+$vmData = gc vmData.json | convertfrom-json
 az configure --defaults vm=$vmName
 
 # TODO: capture the VM systemAssignedIdentity
-$vmId = $vmData | head -n 1
-$vmIp = $vmData | tail -n +2
+$vmId = $vmData.identity.systemAssignedIdentity
+$vmIp = $vmData.publicIpAddress
 
 # TODO: open vm port 443
 az vm open-port --port 443
