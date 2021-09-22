@@ -29,6 +29,7 @@ az keyvault create -n $kvName --enable-soft-delete false --enabled-for-deploymen
 az keyvault secret set --vault-name $kvName --description "Connection string" --name $kvSecretName --value $kvSecretValue
 
 # TODO: set KV access-policy (using the vm ``systemAssignedIdentity``)
+az keyvault set-policy --name $kvName --object-id $vmId --secret-permissions list get
 
 az vm run-command invoke --command-id RunShellScript --scripts @vm-configuration-scripts/1configure-vm.sh
 
