@@ -18,7 +18,8 @@ $vmData = $(az vm create -n $vmName --size $vmSize --image $vmImage --admin-user
 az configure --defaults vm=$vmName
 
 # TODO: capture the VM systemAssignedIdentity
-$vmId = $vmData.identity.systemAssignedIdentity
+$vmId = $vmData | head -n 1
+$vmIp = $vmData | tail -n +2
 
 # TODO: open vm port 443
 az vm open-port --port 443
@@ -39,4 +40,4 @@ az vm run-command invoke --command-id RunShellScript --scripts @vm-configuration
 az vm run-command invoke --command-id RunShellScript --scripts @deliver-deploy.sh
 
 # TODO: print VM public IP address to STDOUT or save it as a file
-echo "$vmName available at $vmData.publicIpAddress"
+echo "$vmName available at $vmIp"
