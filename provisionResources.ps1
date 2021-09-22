@@ -10,6 +10,7 @@ $kvSecretName = "ConnectionStrings--Default"
 $kvSecretValue = "server=localhost;port=3306;database=coding_events;user=coding_events;password=launchcode"
 
 # TODO: provision RG
+az group create -n $rgName
 
 # TODO: provision VM
 
