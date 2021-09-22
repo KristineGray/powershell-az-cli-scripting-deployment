@@ -37,5 +37,5 @@ az vm run-command invoke --command-id RunShellScript --scripts @vm-configuration
 
 az vm run-command invoke --command-id RunShellScript --scripts @deliver-deploy.sh
 
-
 # TODO: print VM public IP address to STDOUT or save it as a file
+echo "$vmName available at $vmData.publicIpAddress"
