@@ -13,9 +13,10 @@ $kvSecretValue = "server=localhost;port=3306;database=coding_events;user=coding_
 az group create -n $rgName
 
 # TODO: provision VM
-az vm create -n $vmName -g $rgName --size $vmSize --image $vmImage --admin-username $vmAdminUsername
+vmData = $(az vm create -n $vmName -g $rgName --size $vmSize --image $vmImage --admin-username $vmAdminUsername --admin-password "LaunchCode-@zure1)
 
 # TODO: capture the VM systemAssignedIdentity
+vmId = $vmData --query "identity.systemAssignedIdentity"
 
 # TODO: open vm port 443
 
