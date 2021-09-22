@@ -14,7 +14,7 @@ az group create -n $rgName
 az configure --defaults group=$rgName
 
 # TODO: provision VM
-$vmData = $(az vm create -n $vmName --size $vmSize --image $vmImage --admin-username $vmAdminUsername --admin-password "LaunchCode-@zure1" --assign-identity)
+$vmData = $(az vm create -n $vmName --size $vmSize --image $vmImage --admin-username $vmAdminUsername --admin-password "LaunchCode-@zure1" --authentication-type password --assign-identity --query "[ identity.systemAssignedIdentity, publicIpAddress ]" -o tsv)
 az configure --defaults vm=$vmName
 
 # TODO: capture the VM systemAssignedIdentity
