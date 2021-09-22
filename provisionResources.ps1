@@ -1,11 +1,11 @@
 # TODO: set variables
-$studentName = "Kristine"
-$rgName = "$studentName-lc0821-ps-rg"
-$vmName = "$studentName-lc0821-ps-vm"
+$studentName = "kristine"
+$rgName = "$studentName-lc0921-ps-rg"
+$vmName = "$studentName-lc0921-ps-vm"
 $vmSize = "Standard_B2s"
-$vmImage = "$(az vm image list --query "[? contains(urn, 'Ubuntu')] | [0].urn" -o tsv)"
+$vmImage = "$(az vm image list --query "[? contains(urn, 'Windows')] | [0].urn" -o tsv)"
 $vmAdminUsername = "student"
-$kvName = "$studentName-lc0821-ps-kv"
+$kvName = "$studentName-lc0921-ps-kv"
 $kvSecretName = "ConnectionStrings--Default"
 $kvSecretValue = "server=localhost;port=3306;database=coding_events;user=coding_events;password=launchcode"
 
@@ -13,10 +13,10 @@ $kvSecretValue = "server=localhost;port=3306;database=coding_events;user=coding_
 az group create -n $rgName
 
 # TODO: provision VM
-vmData = $(az vm create -n $vmName -g $rgName --size $vmSize --image $vmImage --admin-username $vmAdminUsername --admin-password "LaunchCode-@zure1" --assign-identity)
+$vmData = $(az vm create -n $vmName -g $rgName --size $vmSize --image $vmImage --admin-username $vmAdminUsername --admin-password "LaunchCode-@zure1" --assign-identity)
 
 # TODO: capture the VM systemAssignedIdentity
-vmId = $vmData.identity.systemAssignedIdentity
+$vmId = $vmData.identity.systemAssignedIdentity
 
 # TODO: open vm port 443
 az vm open-port --port 443
