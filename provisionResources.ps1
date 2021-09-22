@@ -11,9 +11,11 @@ $kvSecretValue = "server=localhost;port=3306;database=coding_events;user=coding_
 
 # TODO: provision RG
 az group create -n $rgName
+az configure --defaults group=$rgName
 
 # TODO: provision VM
-$vmData = $(az vm create -n $vmName -g $rgName --size $vmSize --image $vmImage --admin-username $vmAdminUsername --admin-password "LaunchCode-@zure1" --assign-identity)
+$vmData = $(az vm create -n $vmName --size $vmSize --image $vmImage --admin-username $vmAdminUsername --admin-password "LaunchCode-@zure1" --assign-identity)
+az configure --defaults vm=$vmName
 
 # TODO: capture the VM systemAssignedIdentity
 $vmId = $vmData.identity.systemAssignedIdentity
@@ -22,8 +24,7 @@ $vmId = $vmData.identity.systemAssignedIdentity
 az vm open-port --port 443
 
 # provision KV
-
-az keyvault create -n $kvName -g $rgName --enable-soft-delete false --enabled-for-deployment true
+az keyvault create -n $kvName --enable-soft-delete false --enabled-for-deployment true
 
 # TODO: create KV secret (database connection string)
 az keyvault secret set --vault-name $kvName --description "Connection string" --name $kvSecretName --value $kvSecretValue
