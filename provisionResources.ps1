@@ -13,7 +13,7 @@ $kvSecretValue = "server=localhost;port=3306;database=coding_events;user=coding_
 az group create -n $rgName
 
 # TODO: provision VM
-vmData = $(az vm create -n $vmName -g $rgName --size $vmSize --image $vmImage --admin-username $vmAdminUsername --admin-password "LaunchCode-@zure1 --assign-identity)
+vmData = $(az vm create -n $vmName -g $rgName --size $vmSize --image $vmImage --admin-username $vmAdminUsername --admin-password "LaunchCode-@zure1" --assign-identity)
 
 # TODO: capture the VM systemAssignedIdentity
 vmId = $vmData.identity.systemAssignedIdentity
