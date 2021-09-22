@@ -13,6 +13,7 @@ $kvSecretValue = "server=localhost;port=3306;database=coding_events;user=coding_
 az group create -n $rgName
 
 # TODO: provision VM
+az vm create -n $vmName -g $rgName --size $vmSize --image $vmImage --admin-username $vmAdminUsername
 
 # TODO: capture the VM systemAssignedIdentity
 
