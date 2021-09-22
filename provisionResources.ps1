@@ -1,5 +1,5 @@
 # TODO: set variables
-$studentName = "kristine"
+$studentName = "kg"
 $rgName = "$studentName-lc0921-ps-rg"
 $vmName = "$studentName-lc0921-ps-vm"
 $vmSize = "Standard_B2s"
