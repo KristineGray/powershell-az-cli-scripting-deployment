@@ -19,6 +19,7 @@ vmData = $(az vm create -n $vmName -g $rgName --size $vmSize --image $vmImage --
 vmId = $vmData --query "identity.systemAssignedIdentity"
 
 # TODO: open vm port 443
+az vm open-port --port 443
 
 # provision KV
 
