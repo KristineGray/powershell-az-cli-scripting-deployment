@@ -23,7 +23,7 @@ az vm open-port --port 443
 
 # provision KV
 
-az keyvault create -n $kvName --enable-soft-delete false --enabled-for-deployment true
+az keyvault create -n $kvName -g $rgName --enable-soft-delete false --enabled-for-deployment true
 
 # TODO: create KV secret (database connection string)
 az keyvault secret set --vault-name $kvName --description "Connection string" --name $kvSecretName --value $kvSecretValue
