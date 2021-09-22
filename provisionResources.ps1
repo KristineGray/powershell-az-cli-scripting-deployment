@@ -1,11 +1,11 @@
 # TODO: set variables
-$studentName = ""
-$rgName = ""
-$vmName = ""
-$vmSize = ""
-$vmImage = ""
-$vmAdminUsername = ""
-$kvName = "$studentName-lc0820-ps-kv"
+$studentName = "Kristine"
+$rgName = "$studentName-lc0821-ps-rg"
+$vmName = "$studentName-lc0821-ps-vm"
+$vmSize = "Standard_B2s"
+$vmImage = "$(az vm image list --query "[? contains(urn, 'Ubuntu')] | [0].urn" -o tsv)"
+$vmAdminUsername = "student"
+$kvName = "$studentName-lc0821-ps-kv"
 $kvSecretName = "ConnectionStrings--Default"
 $kvSecretValue = "server=localhost;port=3306;database=coding_events;user=coding_events;password=launchcode"
 
